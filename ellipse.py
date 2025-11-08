@@ -1,4 +1,6 @@
 """
+Author: Blerta Rushiti
+
 Ellipse Incident Angle Calculator
 
 This script calculates and visualizes incident angles on an elliptical mirror surface.
@@ -14,9 +16,9 @@ Features:
 - Visualizes chosen points and their incident rays
 
 Parameters:
-    a: semi-major axis (= 25)
-    b: semi-minor axis (= 1)
-    theta0, theta1: angular positions of chosen points (-π/2, -π/4)
+    a: semi-major axis 
+    b: semi-minor axis 
+    theta0, theta1: angular positions of chosen points 
 
 Functions:
     incident_angle_interior(F, point, a, b):
@@ -26,14 +28,13 @@ Output:
     - Console output of incident angles at chosen points
     - Plot showing mirror surface, foci, and chosen points
 
-Author: Blerta Rushiti
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 a = 25  # semi-major axis
-b = 1   # semi-minor axis
+b = 5  # semi-minor axis
 
 # Foci
 c = np.sqrt(a**2 - b**2)
@@ -88,15 +89,18 @@ plt.figure(figsize=(12,3))
 mask = y < 0
 plt.plot(x[mask], y[mask], label="Mirror surface")
 
-plt.scatter([F1[0], F2[0]], [F1[1], F2[1]], color="red", marker="o", label="Foci")
 plt.scatter(x0, y0, color="blue", marker="s", label="Chosen point 0")
 plt.scatter(x1, y1, color="brown", marker="s", label="Chosen point 1")
 
-# Rays
-plt.plot([F1[0], x0], [F1[1], y0], 'g--')
-plt.plot([x0, F2[0]], [y0, F2[1]], 'm--')
-plt.plot([F1[0], x1], [F1[1], y1], 'g--')
+# Rays with distinct labels
+plt.plot([F1[0], x0], [F1[1], y0], 'g--', label='Incident rays')
+plt.plot([x0, F2[0]], [y0, F2[1]], 'm--', label='Reflected rays')
+plt.plot([F1[0], x1], [F1[1], y1], 'g--')  # no label needed for additional rays
 plt.plot([x1, F2[0]], [y1, F2[1]], 'm--')
+
+# Foci with separate labels
+plt.scatter([F1[0]], [F1[1]], color="red", marker="o", label="Source (F1)")
+plt.scatter([F2[0]], [F2[1]], color="orange", marker="o", label="Sample(F2)")
 
 # Inward normals
 plt.plot([x0, x0+normal0[0]], [y0, y0+normal0[1]], 'k-')
@@ -106,6 +110,8 @@ plt.gca().set_aspect("equal")
 
 plt.axhline(0, color="gray", linestyle="--")
 plt.axvline(0, color="gray", linestyle="--")
-plt.legend(loc="upper left", bbox_to_anchor=(0.7, 0.2))
+# Adjust legend position and font size
+plt.legend(loc="upper left", bbox_to_anchor=(1.05, 1), fontsize='small')
+plt.tight_layout()  # Adjust layout to prevent legend cutoff
 plt.title("Ellipsoidal mirror with incident rays (y > 0)")
 plt.show()
