@@ -97,10 +97,13 @@ materials = {
     "Si": "Si_350eV.txt",
     "Al": "Al_350eV.txt",
     "Mo/Si": "MoSi_350eV.txt",
-    "SiO2": "SiO2_350eV.txt",
-    "MultiLayer_Si_Mo": "MultiLayer_Si_Mo_350eV.txt",
-    "MultiLayer_Sc_Cr": "MultiLayer_Sc_Cr_350eV.txt",
-    "Cr-Ti": "Cr-Ti_350eV.txt"
+    "SiO2": "SiO2_350eV.txt",    
+    "Ni": "Ni_350eV.txt",
+    "Cr/Ti": "Cr-Ti_350eV.txt",
+    "Cr/V": "Cr-V_350eV.txt",
+    "Cr/Sc": "Cr-Sc_350eV.txt",
+    "W/B4C": "W-B4C_350eV.txt"
+
 }
 
 # --- Convert incident angle -> grazing angle ---
